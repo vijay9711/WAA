@@ -1,8 +1,10 @@
 package waarest.waarest.entity;
 
-import lombok.AllArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonValue;
 import lombok.Data;
-import lombok.NoArgsConstructor;
+
+import java.util.Random;
+import java.util.UUID;
 
 @Data
 // @AllArgsConstructor

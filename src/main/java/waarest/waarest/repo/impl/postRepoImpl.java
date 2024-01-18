@@ -2,7 +2,10 @@ package waarest.waarest.repo.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+import java.util.UUID;
 
+import com.fasterxml.jackson.annotation.JsonValue;
 import org.springframework.stereotype.Repository;
 
 import waarest.waarest.entity.Post;
@@ -29,5 +32,28 @@ public class postRepoImpl implements PostRepo{
   public List<Post> findAll() {
     return postList;
   }
-  
+
+  @Override
+  public Post findById(int id) {
+    return postList.stream().filter(x->x.getId() == id).findFirst().orElse(null);
+  }
+
+  @Override
+  public Post addPost(Post data) {
+    postList.add(data);
+    return data;
+  }
+
+  @Override
+  public String deleteById(int id) {
+    List<Post> newPost = new ArrayList<Post>(postList.size());
+    for(var i = 0; i < postList.size(); i++){
+      if(postList.get(i).getId() != id){
+        newPost.add(postList.get(i));
+      }
+    }
+    postList = newPost;
+    return "deleted successfully";
+  }
+
 }
