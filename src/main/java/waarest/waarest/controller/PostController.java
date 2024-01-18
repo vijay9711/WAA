@@ -42,4 +42,9 @@ public class PostController {
     data.setId(id);
     return postService.addPost(data);
   }
+
+  @PutMapping("/{id}")
+  public String updatePost(@PathVariable("id") int id, @RequestBody Post data){
+    return postService.updatePost(data,id);
+  }
 }

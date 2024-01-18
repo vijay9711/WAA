@@ -11,4 +11,5 @@ public interface PostService {
  Post addPost(Post data);
 
  String deleteById(int id);
+ String updatePost(Post data, int id);
 }

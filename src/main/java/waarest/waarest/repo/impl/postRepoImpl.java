@@ -55,5 +55,15 @@ public class postRepoImpl implements PostRepo{
     postList = newPost;
     return "deleted successfully";
   }
+  @Override
+  public String updatePost(Post data, int id) {
+    for(var i = 0; i < postList.size(); i++){
+      if(postList.get(i).getId() == id){
+        data.setId(id);
+        postList.set(i,data);
+      }
+    }
+    return "updated successfully";
+  }
 
 }

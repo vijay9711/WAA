@@ -38,4 +38,9 @@ public class postImpl implements PostService{
     return postRepo.deleteById(id);
   }
 
+  @Override
+  public String updatePost(Post data, int id) {
+    return postRepo.updatePost(data, id);
+  }
+
 }
