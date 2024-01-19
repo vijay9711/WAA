@@ -1,9 +1,8 @@
 package waarest.waarest.service.impl;
 
 import java.util.List;
-import java.util.UUID;
+import java.util.Optional;
 
-import com.fasterxml.jackson.annotation.JsonValue;
 import waarest.waarest.entity.Post;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,23 +23,23 @@ public class postImpl implements PostService{
   }
 
   @Override
-  public Post findById(int id) {
+  public Optional<Post> findById(int id) {
     return postRepo.findById(id);
   }
 
   @Override
   public Post addPost(Post data) {
-    return postRepo.addPost(data);
+    return postRepo.save(data);
   }
 
-  @Override
-  public String deleteById(int id) {
-    return postRepo.deleteById(id);
-  }
+//  @Override
+//  public String deleteById(int id) {
+//    return postRepo.deleteById(id);
+//  }
 
-  @Override
-  public String updatePost(Post data, int id) {
-    return postRepo.updatePost(data, id);
-  }
+//  @Override
+//  public Post updatePost(Post data, int id) {
+//    return postRepo.save(data, id);
+//  }
 
 }

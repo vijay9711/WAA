@@ -1,36 +1,31 @@
 package waarest.waarest.entity;
 
-import com.fasterxml.jackson.annotation.JsonValue;
+// import com.fasterxml.jackson.annotation.JsonValue;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
-import java.util.Random;
-import java.util.UUID;
+// import java.util.Random;
+// import java.util.UUID;
 
 @Data
-// @AllArgsConstructor
-// @NoArgsConstructor
-final public class Post {
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+public class Post {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    @Getter
+    private String title;
+    @Getter
+    private String content;
+    @Getter
+    private String author;
 
-  private int id;
-  private String title;
-  private String content;
-  private String author;
-
-  public Post(int id, String title, String content, String author){
-    this.id = id;
-    this.title = title;
-    this.content = content;
-    this.author = author;
-  }
-
-	
-	public String getTitle() {
-		return title;
-	}
-	public String getContent() {
-		return content;
-	}
-	public String getAuthor() {
-		return author;
-	}
 }
