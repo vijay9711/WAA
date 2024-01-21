@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import waarest.waarest.entity.Comment;
+import waarest.waarest.repo.PostRepo;
 import waarest.waarest.service.PostService;
 
 import java.util.List;
@@ -18,7 +19,8 @@ public class PostController {
   
   @Autowired
   PostService postService;
-
+  @Autowired
+  PostRepo postRepo;
   @GetMapping
   public List<Post> findAll(){
     return postService.findAll();
@@ -41,9 +43,15 @@ public class PostController {
   @PostMapping("/{post_id}/user/{user_id}/addComment")
   public String addCommentToPost(@RequestBody Comment data, @PathVariable("post_id") int post_id, @PathVariable("user_id") int user_id){
     return postService.addCommentToPost(data, post_id, user_id);
+//    return postRepo.findByIdAfterAndComments(post_id, (List<Comment>) data);
   }
   @PutMapping("/{id}")
   public String updatePost(@PathVariable("id") int id, @RequestBody Post data){
     return postService.updatePost(data,id);
+  }
+
+  @GetMapping("/filter/findByTitle/{text}")
+  public List<Post> findPostsByTitle(@PathVariable("text") String text){
+    return postRepo.findPostByTitle(text);
   }
 }

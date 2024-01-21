@@ -17,4 +17,6 @@ public interface UserService {
     String updateUser(User data, int id);
 
     Optional<User> addPostToUser(Post data, int user_id);
+
+//    List<User> findUsersByPostsGreaterThan(int user_id, int count);
 }
