@@ -62,6 +62,7 @@ public class userImpl implements UserService {
         if(user.isPresent()){
             Post newPost = postRepo.save(data);
             List<Post> userPostList = user.get().getPosts();
+            newPost.setUser(user.get());
             userPostList.add(newPost);
             user.get().setPosts(userPostList);
             userRepo.save(user.get());

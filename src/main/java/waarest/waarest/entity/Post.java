@@ -33,6 +33,7 @@ public class Post {
     private String author;
 
     @ManyToOne
+    @JoinColumn(name = "user_id")
     @JsonBackReference
     private User user;
 
