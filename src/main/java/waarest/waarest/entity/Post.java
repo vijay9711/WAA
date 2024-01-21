@@ -1,14 +1,18 @@
 package waarest.waarest.entity;
 
 // import com.fasterxml.jackson.annotation.JsonValue;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.BatchSize;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
+import java.util.List;
 
 // import java.util.Random;
 // import java.util.UUID;
@@ -27,5 +31,17 @@ public class Post {
     private String content;
     @Getter
     private String author;
+
+    @ManyToOne
+    @JsonBackReference
+    private User user;
+
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @Fetch(FetchMode.SELECT)
+    @JsonManagedReference
+    @JoinColumn(name = "post_id")
+    @BatchSize(size = 5)
+    private List<Comment> comments;
 
 }

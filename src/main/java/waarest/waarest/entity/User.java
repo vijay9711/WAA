@@ -1,10 +1,13 @@
 package waarest.waarest.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import java.util.List;
 
@@ -21,9 +24,10 @@ public class User {
     @Getter
     private String name;
 
-    @Getter
-    @OneToMany
-    @JoinColumn
-    private List<Post> post;
+    @JsonManagedReference
+    @JoinColumn()
+    @OneToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @Fetch(FetchMode.SELECT)
+    private List<Post> posts;
 
 }

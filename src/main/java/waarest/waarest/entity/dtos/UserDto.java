@@ -1,12 +1,11 @@
 package waarest.waarest.entity.dtos;
 
-// import waarest.waarest.entity.Post;
-// import waarest.waarest.entity.User;
+ import waarest.waarest.entity.Post;
+ import waarest.waarest.entity.User;
 
-// import java.util.List;
+ import java.util.List;
 
 public class UserDto {
-    // private int id;
-    // private String name;
-    // private List<Post> post;
+//     private int id;
+//     private String name;
 }

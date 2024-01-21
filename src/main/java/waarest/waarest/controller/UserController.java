@@ -2,6 +2,7 @@ package waarest.waarest.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import waarest.waarest.entity.Post;
 import waarest.waarest.entity.User;
 import waarest.waarest.service.UserService;
 
@@ -24,8 +25,25 @@ public class UserController {
         return userService.addUser(data);
     }
 
+    @PostMapping("/{user_id}/addPost")
+    public Optional<User> addPostToUser(@RequestBody Post data, @PathVariable("user_id") int user_id){
+        return userService.addPostToUser(data, user_id);
+    }
+
     @GetMapping("/{id}")
     public Optional<User> findById(@PathVariable("id") int id){
         return userService.findById(id);
+    }
+
+//    @PutMapping
+
+    @DeleteMapping("/{id}")
+    public String deleteById(@PathVariable("id") int id){
+        return userService.deleteById(id);
+    }
+
+    @PutMapping("/{id}")
+    public String updateUser(@PathVariable("id") int id, @RequestBody User data){
+        return userService.updateUser(data,id);
     }
 }
