@@ -22,17 +22,17 @@ public class PostController {
   @Autowired
   PostRepo postRepo;
   @GetMapping
-  public List<Post> findAll(){
+  public List<Post> findAllPost(){
     return postService.findAll();
   }
 
   @GetMapping("/{id}")
-  public Optional<Post> findById(@PathVariable("id") int id){
+  public Optional<Post> findPostById(@PathVariable("id") int id){
     return postService.findById(id);
   }
 
   @DeleteMapping("/{id}")
-  public String deleteById(@PathVariable("id") int id){
+  public String deletePostById(@PathVariable("id") int id){
     return postService.deleteById(id);
   }
   @PostMapping()
@@ -53,5 +53,10 @@ public class PostController {
   @GetMapping("/filter/findByTitle/{text}")
   public List<Post> findPostsByTitle(@PathVariable("text") String text){
     return postRepo.findPostByTitle(text);
+  }
+
+  @GetMapping("/filter/findByAuthor/{name}")
+  public List<Post> findPostsByAuthor(@PathVariable("name") String name){
+    return postRepo.findPostByAuthor(name);
   }
 }

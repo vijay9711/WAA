@@ -38,7 +38,7 @@ public class Post {
     private User user;
 
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @Fetch(FetchMode.SELECT)
     @JsonManagedReference
     @JoinColumn(name = "post_id")

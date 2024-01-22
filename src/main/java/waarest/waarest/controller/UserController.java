@@ -2,6 +2,7 @@ package waarest.waarest.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import waarest.waarest.Aspects.annotation.LogExecutionTime;
 import waarest.waarest.entity.Post;
 import waarest.waarest.entity.User;
 import waarest.waarest.repo.UserRepo;
@@ -18,12 +19,13 @@ public class UserController {
     @Autowired
     UserRepo userRepo;
     @GetMapping
-    public List<User> findAll(){
+    @LogExecutionTime
+    public List<User> findAllUser(){
         return userService.findAll();
     }
 
     @PostMapping()
-    public User addPost(@RequestBody User data){
+    public User addUser(@RequestBody User data){
         return userService.addUser(data);
     }
 
@@ -33,14 +35,14 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public Optional<User> findById(@PathVariable("id") int id){
+    public Optional<User> findUserById(@PathVariable("id") int id){
         return userService.findById(id);
     }
 
 //    @PutMapping
 
     @DeleteMapping("/{id}")
-    public String deleteById(@PathVariable("id") int id){
+    public String deleteUserById(@PathVariable("id") int id){
         return userService.deleteById(id);
     }
 
@@ -52,5 +54,10 @@ public class UserController {
     @GetMapping("/filter/findUserByPostCount/{count}")
     public List<User> getUserByPostCount(@PathVariable("count") int count){
         return userRepo.findUsersByPostCount(count);
+    }
+
+    @GetMapping("/filter/findUserByPostTitle/{title}")
+    public User getUserByPostTitle(@PathVariable("title") String title){
+        return userRepo.getUserByPostTitle(title);
     }
 }

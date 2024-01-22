@@ -15,6 +15,7 @@ public interface PostRepo extends JpaRepository<Post, Integer> {
   Post save(PostDto data);
 
   public List<Post> findPostByTitle(String title);
+  public List<Post> findPostByAuthor(String name);
 
 //  Post save(Post data, int id);
 //  List<Post> findAll();

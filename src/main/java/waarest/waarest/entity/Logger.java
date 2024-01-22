@@ -1,26 +1,30 @@
 package waarest.waarest.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
+
+import java.sql.Time;
+import java.util.Date;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Comment {
+public class Logger {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column
-    private String comment;
-    private String name;
+    @CreatedDate
+    @Column(name = "created_at")
+    private Date createdAt;
 
-    @ManyToOne
-    @JsonBackReference
-    private Post post;
+    @Column
+    private String principle;
+
+    @Column
+    private String operation;
 }

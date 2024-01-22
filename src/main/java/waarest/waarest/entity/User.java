@@ -25,7 +25,7 @@ public class User {
     private String name;
 
     @JsonManagedReference
-    @JoinColumn()
+    @JoinColumn(name = "user_id")
     @OneToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @Fetch(FetchMode.SELECT)
     private List<Post> posts;

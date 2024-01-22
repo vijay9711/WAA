@@ -23,21 +23,21 @@ public class CommentController {
     }
 
     @GetMapping("/{id}")
-    public Optional<Comment> findById(@PathVariable("id") int id){
+    public Optional<Comment> findCommentById(@PathVariable("id") int id){
         return commentService.findById(id);
     }
 
     @DeleteMapping("/{id}")
-    public String deleteById(@PathVariable("id") int id){
+    public String deleteCommentById(@PathVariable("id") int id){
         return commentService.deleteById(id);
     }
-    @PostMapping()
-    public Comment addComment(@RequestBody Comment data){
-        return commentService.addComment(data);
-    }
+//    @PostMapping()
+//    public Comment addComment(@RequestBody Comment data){
+//        return commentService.addComment(data);
+//    }
 
     @PutMapping("/{id}")
-    public String updatePost(@PathVariable("id") int id, @RequestBody Comment data){
+    public String updateComment(@PathVariable("id") int id, @RequestBody Comment data){
         return commentService.updateComment(data,id);
     }
 }
