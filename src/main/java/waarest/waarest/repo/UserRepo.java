@@ -13,4 +13,6 @@ public interface UserRepo extends JpaRepository<User, Integer> {
 
     @Query("select user from User user JOIN user.posts p where p.title = :title")
     public User getUserByPostTitle(String title);
+
+    public User findUserByName(String name);
 }

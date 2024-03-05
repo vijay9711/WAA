@@ -7,7 +7,7 @@ package waarest.waarest.entity.dtos;
 
 public class PostDto {
     // private int id;
-    // private String title;
-    // private String content;
-    // private String author;
+     private String title;
+     private String content;
+     private String author;
 }

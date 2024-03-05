@@ -30,4 +30,13 @@ public class User {
     @Fetch(FetchMode.SELECT)
     private List<Post> posts;
 
+    @Getter
+    private String email;
+
+    private String password;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable
+    private List<Role> roles;
+
 }

@@ -25,6 +25,7 @@ public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     @Getter
     private String title;
     @Getter

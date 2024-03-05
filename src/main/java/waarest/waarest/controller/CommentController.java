@@ -12,6 +12,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/comments")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class CommentController {
 
     @Autowired

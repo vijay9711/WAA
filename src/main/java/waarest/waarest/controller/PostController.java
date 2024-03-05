@@ -15,6 +15,7 @@ import waarest.waarest.entity.Post;
 
 @RestController
 @RequestMapping("/api/v1/posts")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class PostController {
   
   @Autowired
